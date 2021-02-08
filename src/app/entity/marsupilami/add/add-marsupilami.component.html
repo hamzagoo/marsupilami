@@ -1,0 +1,58 @@
+<ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
+
+<nav class="navbar navbar-expand-sm bg-light" style="background-color: #007bff !important;">
+  <div class="container-fluid">
+    <a href="http://localhost:4200/marsupilami/list">
+     <img src="../../../../assets/marsupilami.jpg" style=" width: 25%;" routerLinkActive="active">
+    </a>
+    <ul class="navbar-nav" *ngIf=false>
+      <li class="nav-item">
+        <a  (click)="redirectToRegister()" class="nav-link" routerLinkActive="active">
+          Precedent
+        </a>
+      </li>
+      <li class="nav-item">
+        <a (click)="redirectToLogin()" class="nav-link" routerLinkActive="active">
+          Login
+        </a>
+      </li> 
+    </ul>
+    <ul class="navbar-nav"  *ngIf=true >
+      <li class="nav-item">
+        <a style="cursor: pointer; color: white;" (click)="redirectToLogin()" class="nav-link" routerLinkActive="active">
+          log Out
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<div class="container">
+<div class="card">
+    <div class="card-body">
+        <div class="form-group">
+          <label class="col-md-4" style="    font-size: larger;font-family: cursive;">Age</label>
+          <input type="number" [(ngModel)]="marsupilami.age" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label class="col-md-4" style="    font-size: larger;font-family: cursive;">Family </label>
+          <input type="text" [(ngModel)]="marsupilami.family" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label class="col-md-4" style="    font-size: larger;font-family: cursive;">Race </label>
+          <input type="text" [(ngModel)]="marsupilami.race" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="col-md-4"style="    font-size: larger;font-family: cursive;">Food </label>
+            <input type="text"  [(ngModel)]="marsupilami.food" class="form-control" />
+          </div>
+        <div class="form-group">
+            <label class="col-md-4"style="    font-size: larger;font-family: cursive;">Created By </label>
+            <input type="text" disabled [(ngModel)]="marsupilami.createdBy" class="form-control" />
+        </div>
+        <div class="form-group" style="text-align: center;"> 
+          <button style="width: 20%;" (click)="save()"  class="btn btn-primary">Save</button>
+        </div>
+    </div>
+ </div>
+ </div>

@@ -1,0 +1,7 @@
+.art-shadow {
+    text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgb(0 0 0 / 15%);
+    color: #007bff;
+    text-align: center;
+    font-size: xxx-large;
+	text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
+}
