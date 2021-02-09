@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     this.angForm = this.fb.group({
       username: ['', Validators.required ],
       password: ['', Validators.required ],
-      confirme_password: ['', Validators.required ]
+      //confirme_password: ['', Validators.required ]
     });
   }
 

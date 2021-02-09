@@ -1,8 +1,7 @@
-<ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
 
-<nav class="navbar navbar-expand-sm bg-light" style="background-color: #007bff !important;">
+<nav class="navbar navbar-expand-sm bg-light" style="background-color: #45a1ff !important;">
   <div class="container-fluid">
-    <img src="../../../../assets/marsupilami.jpg" width="10%">
+    <img src="../../../../assets/marsupilami.jpg" style="border-radius: 37%;"  width="10%">
     <ul class="navbar-nav" *ngIf=true>
       <li class="nav-item">
         <a style="cursor: pointer; color: white;"  (click)="redirectToRegister()" class="nav-link" routerLinkActive="active">
@@ -43,7 +42,7 @@
               </div>
             <div class="form-group" style="text-align: left;">
               <label class="col-md-4">Password </label>
-              <input type="password" class="form-control" id="password" formControlName="password"/>
+              <input type="password"  class="form-control" id="password" formControlName="password"/>
             </div>
             <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
                 <div *ngIf="angForm.controls['password'].errors.required">
@@ -52,7 +51,7 @@
               </div>
               <div class="form-group" style="text-align: left;">
                 <label class="col-md-4">confirm Password </label>
-                <input type="password" id ="confirme_password" class="form-control" formControlName="confirme_password"/>
+                <input type="password"  id ="confirme_password" class="form-control" formControlName="confirme_password"/>
               </div>
               <div *ngIf="angForm.controls['confirme_password'].invalid && (angForm.controls['confirme_password'].dirty || angForm.controls['confirme_password'].touched)" class="alert alert-danger">
                   <div *ngIf="angForm.controls['confirme_password'].errors.required">

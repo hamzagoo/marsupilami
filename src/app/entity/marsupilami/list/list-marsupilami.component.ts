@@ -1,5 +1,4 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Marsupilami } from '../marsupilami';
 import { MarsupilamiService } from '../marsupilami.service';
@@ -18,16 +17,25 @@ export class ListMarsupilamiComponent implements OnInit {
   constructor(private router:Router, private marsupilamiService: MarsupilamiService) { }
 
 
-  redirectToEdit(id){
+  redirectToEdit(id,createdBy){
+    // Stocker id selectionné dans localStorage
     localStorage.setItem("id", JSON.stringify(id));
-    this.router.navigate(['marsupilami/edit/'])
+    // recuperation de l'utilisateur courant dans localStorage
+    const CurrentCreatedBy =  JSON.parse(localStorage.getItem("currentUser"));
+    // test pour les droits d'accée 
+    if(createdBy == CurrentCreatedBy || CurrentCreatedBy == "Admin"){
+      this.router.navigate(['marsupilami/edit/'])
+    }else{
+      window.alert("you don't have the right to modify it !! you are not the owner ")
+    }   
   }
 
   delete(id){
     this.marsupilamiService.delete(id).subscribe(res => {
       console.log('Deleted');
       this.getAll();
-    });;
+    });
+    
   }
 
   
@@ -41,25 +49,32 @@ export class ListMarsupilamiComponent implements OnInit {
     })
   }
 
-  open(id) {
-    const reponse = window.confirm("Confirmer la suppression !! "); 
-    if(reponse == true){
-      this.delete(id);
-    }
+  open(id,createdBy) {
+    // recuperation de l'utilisateur courant dans localStorage
+    const CurrentCreatedBy =  JSON.parse(localStorage.getItem("currentUser"));
+    // test pour les droits d'accée 
+    if(createdBy == CurrentCreatedBy || CurrentCreatedBy =="Admin"){
+      const reponse = window.confirm("Confirm deletion !! "); 
+      if(reponse == true){
+        this.delete(id);
+      }
+    }else{
+      window.alert("you don't have the right to delete it !! you are not the owner ")
+    }  
+   
   }
 
   ngOnInit(): void {
     this.getAll();
   }
 
-  redirectToRegister(){
-    this.router.navigate(['login/register'])
+  redirectToLogin(){ 
+    const reponse = window.confirm("confirmer la déconnexion"); 
+    if(reponse == true){
+      this.router.navigate([''])
+    }
   }
-
-  redirectToLogin(){
-    this.router.navigate([''])
-  }
-
+ 
 }
 
  

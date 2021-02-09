@@ -8,10 +8,9 @@ const marsupilamiRoutes = express.Router();
 // Require marsupilami model in our routes module
 let marsupilami = require('../modele/Marsupilami');
 
-// Defined store route
+// Defined add data
 marsupilamiRoutes.route('/add').post(function (req, res) {
   let marsupilami = new Marsupilami(req.body);
-  console.log(marsupilami + "*****")
   marsupilami.save()
     .then(marsupilami => {
       res.status(200).json({'marsupilami': 'marsupilami in added successfully'});
@@ -21,7 +20,7 @@ marsupilamiRoutes.route('/add').post(function (req, res) {
     });
 });
 
-// Defined get data( listing) route
+// Defined get data
 marsupilamiRoutes.route('/list').get(function (req, res) {
     marsupilami.find(function (err, marsupilami){
     if(err){

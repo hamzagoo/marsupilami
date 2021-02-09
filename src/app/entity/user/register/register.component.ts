@@ -27,7 +27,17 @@ export class RegisterComponent implements OnInit {
     let user_name = document.getElementById(username) as HTMLInputElement;
     let password_input = document.getElementById(password) as HTMLInputElement;
     let cPassword_inpust = document.getElementById(confirmrPassword) as HTMLInputElement;
-    this.userService.regiter(user_name.value, password_input.value, cPassword_inpust.value);
+    if(password_input.value == cPassword_inpust.value){
+      this.userService.regiter(user_name.value, password_input.value, cPassword_inpust.value);
+    }else{
+      const reponse = window.confirm("password et confirme Password ne sont pas identique"); 
+      if(reponse == true){
+        const password = document.getElementById("password") as HTMLInputElement;
+        const confirmPassword = document.getElementById("confirme_password") as HTMLInputElement;
+        password.value ="";
+        confirmPassword.value = "";
+      }
+    }
   }
 
   ngOnInit(): void {

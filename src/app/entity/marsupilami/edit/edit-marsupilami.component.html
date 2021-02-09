@@ -1,9 +1,8 @@
-<ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
 
-<nav class="navbar navbar-expand-sm bg-light" style="background-color: #007bff !important;">
+<nav class="navbar navbar-expand-sm bg-light" style="background-color: #45a1ff !important;">
   <div class="container-fluid"> 
    <a href="http://localhost:4200/marsupilami/list">
-    <img src="../../../../assets/marsupilami.jpg" style=" width: 25%;" routerLinkActive="active">
+    <img src="../../../../assets/marsupilami.jpg" style=" width: 25%; border-radius: 37%;" routerLinkActive="active">
    </a>
     <ul class="navbar-nav" *ngIf=false>
       <li class="nav-item">
@@ -28,7 +27,15 @@
 </nav>
 <br>
 <div class="container">
-<button type="button"style="    margin-bottom: 10px;" class="btn btn-primary"  (click)="redirectToList()" >Return</button>
+  <div class=row>
+    <div class="col-3">
+      <button type="button"style="    margin-bottom: 10px;" class="btn btn-primary"  (click)="redirectToList()" >Return</button>
+    </div>
+    <div class="col-9">
+      <h1 class="art-shadow">Update Marsupilami</h1>
+    </div>
+    <br>
+  </div>
 <div class="card">
     <div class="card-body">
         <div class="form-group">

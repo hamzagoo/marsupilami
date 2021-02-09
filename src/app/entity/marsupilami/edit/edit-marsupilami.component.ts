@@ -16,22 +16,19 @@ export class EditMarsupilamiComponent implements OnInit {
     
    }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
+    // recuperation id dans localStorage
     this.id =  JSON.parse(localStorage.getItem("id"));
     this.getMarsupilamiById();
   }
 
   getMarsupilamiById(){
     this.marsupilamiService.getById(this.id).subscribe((res: Marsupilami) => {
-      console.log("resultat : " + res)
       this.marsupilami = res;
-
       })
   }
 
   save( age, family, race,food,createdBy){
-      this.id =  JSON.parse(localStorage.getItem("id"));
       this.marsupilamiService.edit( this.id,age, family, race,food,createdBy);
       
   }
@@ -45,7 +42,10 @@ export class EditMarsupilamiComponent implements OnInit {
     this.route.navigate(['login/register'])
   }
 
-  redirectToLogin(){
-    this.route.navigate([''])
+  redirectToLogin(){ 
+    const reponse = window.confirm("confirmer la déconnexion"); 
+    if(reponse == true){
+      this.route.navigate([''])
+    }
   }
 }

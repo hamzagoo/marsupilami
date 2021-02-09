@@ -37,7 +37,13 @@ export class UserService {
             this.router.navigate(['/marsupilami/list'])
             localStorage.setItem("currentUser", JSON.stringify(username));
            },
-          (err) =>window.alert("Username or password is incorrect")
+          (err) =>{
+           const result =  window.confirm("Username or password is incorrect")
+           if(result ==  true){
+            let password_input = document.getElementById('password')as HTMLInputElement
+            password_input.value=""
+           }
+        }
           );
   }
 }

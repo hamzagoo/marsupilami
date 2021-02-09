@@ -28,8 +28,11 @@ export class AddMarsupilamiComponent implements OnInit {
     this.route.navigate(['login/register'])
   }
 
-  redirectToLogin(){
-    this.route.navigate([''])
+  redirectToLogin(){ 
+    const reponse = window.confirm("confirmer la déconnexion"); 
+    if(reponse == true){
+      this.route.navigate([''])
+    }
   }
 
   goToHome(){

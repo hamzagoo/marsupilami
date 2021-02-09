@@ -12,22 +12,25 @@ const User = require('../modele/User');
 // Defined store route
 userRoutes.route('/register').post(function (req, res) {
   let user = new User(req.body);
-  user.save()
+  const name = user.username
+
+    user.save()
     .then(user => {
       res.status(200).json({'user': 'user in added successfully'});
     })
     .catch(err => {
     res.status(400).send("unable to save to database");
     });
+  
 });
 
 async function authenticateService({ username, password }) {
   const user = await User.findOne({ username });
-  if (user) { //&& bcrypt.compare(password, user.hash,null)
-      const token = jwt.sign({ sub: user.id },  "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING", { expiresIn: '7d' });
+  console.log(password)
+  if (user && user.password == password ) { 
       return {
           ...user.toJSON(),
-          token
+         
       };
   }
 }
