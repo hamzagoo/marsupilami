@@ -13,21 +13,13 @@ export class ListMarsupilamiComponent implements OnInit {
 
   id= 0;
   data : Marsupilami[];
+  CurrentMarsupilami:any;
 
   constructor(private router:Router, private marsupilamiService: MarsupilamiService) { }
 
 
-  redirectToEdit(id,createdBy){
-    // Stocker id selectionné dans localStorage
-    localStorage.setItem("id", JSON.stringify(id));
-    // recuperation de l'utilisateur courant dans localStorage
-    const CurrentCreatedBy =  JSON.parse(localStorage.getItem("currentUser"));
-    // test pour les droits d'accée 
-    if(createdBy == CurrentCreatedBy || CurrentCreatedBy == "Admin"){
+  redirectToEdit(){
       this.router.navigate(['marsupilami/edit/'])
-    }else{
-      window.alert("you don't have the right to modify it !! you are not the owner ")
-    }   
   }
 
   delete(id){
@@ -44,7 +36,7 @@ export class ListMarsupilamiComponent implements OnInit {
   }
 
   getAll(){
-   this.marsupilamiService.getAll().subscribe((res: Marsupilami[]) => {
+   this.marsupilamiService.getAllFriend(this.CurrentMarsupilami).subscribe((res: Marsupilami[]) => {
     this.data = res;
     })
   }
@@ -65,6 +57,8 @@ export class ListMarsupilamiComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.CurrentMarsupilami =  JSON.parse(localStorage.getItem("currentUser"));
+    this.id = JSON.parse(localStorage.getItem("id"));
     this.getAll();
   }
 

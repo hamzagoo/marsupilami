@@ -5,19 +5,23 @@ import { EditMarsupilamiComponent } from './edit/edit-marsupilami.component';
 import { ListMarsupilamiComponent } from './list/list-marsupilami.component';
 import { MarsupilamiService } from './marsupilami.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
-
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AddMarsupilamiComponent,
     EditMarsupilamiComponent,
-    ListMarsupilamiComponent
+    ListMarsupilamiComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,9 @@ import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    SlimLoadingBarModule
+    SlimLoadingBarModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers:[
     MarsupilamiService

@@ -26,12 +26,21 @@
   </div>
 </nav>
 <br>
-<h1 class="art-shadow">Add Marsupilami</h1>
+<h1 class="art-shadow">List Of All Marsupilami</h1>
 <br>
 <div class="container">
 <div class="card">
-    <div class="card-body">
+    <div class="card-body" style="overflow: auto; height: 500px;">
+      <!--
         <div class="form-group">
+          <div class="form-group">
+            <label class="col-md-4" style="    font-size: larger;font-family: cursive;">username</label>
+            <input type="text" [(ngModel)]="marsupilami.username" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="col-md-4" style="    font-size: larger;font-family: cursive;">password</label>
+            <input type="password" [(ngModel)]="marsupilami.password" class="form-control" />
+          </div>
           <label class="col-md-4" style="    font-size: larger;font-family: cursive;">Age</label>
           <input type="number" [(ngModel)]="marsupilami.age" class="form-control" />
         </div>
@@ -54,6 +63,41 @@
         <div class="form-group" style="text-align: center;"> 
           <button style="width: 20%;" (click)="save()"  class="btn btn-primary">Save</button>
         </div>
+      -->
+
+      <table class="table table-hover">
+        <thead>
+        <tr style="background-color: #45a1ff; color: white;">
+            <td>userName</td>
+            <span class="vertical-line"></span>
+            <td>Age</td>
+            <span class="vertical-line"></span>
+            <td>Family</td>
+            <span class="vertical-line"></span>
+            <td>Race</td>
+            <span class="vertical-line"></span>
+            <td>Food</td>
+            <span class="vertical-line"></span>
+            <td >Actions</td>    
+        </tr>
+        </thead>
+      
+        <tbody>
+            <tr *ngFor="let marsupilami of data">
+                <td>{{ marsupilami.username }}</td>
+                <span class="vertical-line"></span>
+                <td>{{ marsupilami.age }}</td>
+                <span class="vertical-line"></span>
+                <td>{{ marsupilami.family }}</td>
+                <span class="vertical-line"></span>
+                <td>{{ marsupilami.race }}</td>
+                <span class="vertical-line"></span>
+                <td>{{ marsupilami.food }}</td>
+                <span class="vertical-line"></span>
+                <td><button type="button" class="btn btn-primary"  (click)="save(marsupilami)" >Add</button></td>
+            </tr>
+        </tbody>
+      </table>
     </div>
  </div>
  </div>

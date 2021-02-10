@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddMarsupilamiComponent } from './entity/marsupilami/add/add-marsupilami.component';
 import { EditMarsupilamiComponent } from './entity/marsupilami/edit/edit-marsupilami.component';
 import { ListMarsupilamiComponent } from './entity/marsupilami/list/list-marsupilami.component';
-import { LoginComponent } from './entity/user/login/login.component';
-import { RegisterComponent } from './entity/user/register/register.component';
+import { LoginComponent } from './entity/marsupilami/login/login.component';
+import { RegisterComponent } from './entity/marsupilami/register/register.component';
+
 
 const routes: Routes = [
   {

@@ -28,8 +28,8 @@ export class EditMarsupilamiComponent implements OnInit {
       })
   }
 
-  save( age, family, race,food,createdBy){
-      this.marsupilamiService.edit( this.id,age, family, race,food,createdBy);
+  save( age, family, race,food,friend){
+      this.marsupilamiService.edit( this.id,age, family, race,food,friend);
       
   }
 

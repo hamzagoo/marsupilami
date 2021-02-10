@@ -3,6 +3,12 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for Marsupilami
 let Marsupilami = new Schema({
+  username:{
+    type: String
+  },
+  password:{
+    type: String
+  },
   age: {
     type: Number
   },
@@ -15,9 +21,9 @@ let Marsupilami = new Schema({
   food: {
     type: String
   },
-  createdBy: {
+  friend: {
     type: String
-  }
+  },
 },{
     collection: 'marsupilami'
 });

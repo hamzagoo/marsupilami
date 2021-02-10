@@ -11,17 +11,36 @@ import { MarsupilamiService } from '../marsupilami.service';
 export class AddMarsupilamiComponent implements OnInit {
 
  marsupilami:any ={} //Marsupilami = { _id: 0,age: 0 ,family: '', race: '', food: '', createdBy: ''};
-
+ data : Marsupilami[];
+ currenMarsupilami;
+ id;
   constructor( private marsupilamiService: MarsupilamiService , private route: Router) { }
 
   ngOnInit(): void {
-    
-    this.marsupilami.createdBy =  JSON.parse(localStorage.getItem("currentUser"));
+    this.id =  JSON.parse(localStorage.getItem("id"));
+    this.currenMarsupilami =  JSON.parse(localStorage.getItem("currentUser"));
+    this.getAllMarsupilami();
   }
 
-  save(){
+  getAllMarsupilami(){
+    let count = 0;
+    this.marsupilamiService.getAllMarsupilami().subscribe((res: Marsupilami[]) => {
+      this.data = res; 
+      this.data.forEach(element => {
+        if(element._id == this.id){
+          this.data.splice(count,1)
+        }
+        count++
+      });
+      console.log (this.data)
+      })
+  }
+  save(marsupilami){
+    console.log(marsupilami['age'])
+  
+    marsupilami['friend'] = this.currenMarsupilami;
    // console.log(this.marsupilami.age,this.marsupilami.family,this.marsupilami.race,this.marsupilami.food,this.marsupilami.createdBy);
-    this.marsupilamiService.add(this.marsupilami.age,this.marsupilami.family,this.marsupilami.race,this.marsupilami.food,this.marsupilami.createdBy);
+    this.marsupilamiService.edit(marsupilami["_id"],marsupilami['age'],marsupilami['family'],marsupilami['race'],marsupilami['food'],marsupilami['friend']);
   }
 
   redirectToRegister(){

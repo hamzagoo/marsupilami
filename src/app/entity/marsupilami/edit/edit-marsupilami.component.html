@@ -37,7 +37,11 @@
     <br>
   </div>
 <div class="card">
-    <div class="card-body">
+    <div class="card-body" style="overflow: auto; height: 600px;">
+      <div class="form-group">
+        <label class="col-md-4">Username</label>
+        <input type="text" [(ngModel)]="marsupilami.username" class="form-control" />
+      </div>
         <div class="form-group">
           <label class="col-md-4">Age</label>
           <input type="number" [(ngModel)]="marsupilami.age" class="form-control" />
@@ -55,8 +59,8 @@
             <input type="text"  [(ngModel)]="marsupilami.food" class="form-control" />
           </div>
         <div class="form-group"> 
-            <label class="col-md-4">Created By </label>
-            <input type="text" disabled [(ngModel)]="marsupilami.createdBy" class="form-control" />
+            <label class="col-md-4">Friend </label>
+            <input type="text" disabled [(ngModel)]="marsupilami.friend" class="form-control" />
         </div>
         <div class="form-group" style="text-align: center;">
           <button style="width: 20%;" (click)="save(marsupilami.age,marsupilami.family,marsupilami.race,marsupilami.food,marsupilami.createdBy)"  class="btn btn-primary">Save</button>

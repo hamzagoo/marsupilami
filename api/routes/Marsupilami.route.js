@@ -22,7 +22,23 @@ marsupilamiRoutes.route('/add').post(function (req, res) {
 
 // Defined get data
 marsupilamiRoutes.route('/list').get(function (req, res) {
-    marsupilami.find(function (err, marsupilami){
+  console.log("hanaa")
+    marsupilami.find( function (err, marsupilami){
+    if(err){
+      console.log(err);
+    }
+    else {
+      console.log(marsupilami)
+      res.json(marsupilami);
+    }
+  });
+});
+// Defined get data
+marsupilamiRoutes.route('/list/:usernameMarsupilami').get(function (req, res) {
+  const condition = {
+    "friend" : req.params.usernameMarsupilami
+  }
+    marsupilami.find( condition,function (err, marsupilami){
     if(err){
       console.log(err);
     }
@@ -42,7 +58,7 @@ async function getByIdForUpdate(req,res) {
   marsupilami.family = req.body.family;
   marsupilami.race = req.body.race;
   marsupilami.food = req.body.food;
-  marsupilami.createdBy = req.body.createdBy;
+  marsupilami.friend = req.body.friend;
   marsupilami.save().then(marsupilami => {
     res.json('Update complete');
     })
@@ -67,12 +83,56 @@ async function getById(req,res) {
   getById(req,res);
 });
 
+async function getByIdAndChangeFreind(req,res) {
+
+  const marsupilami = await Marsupilami.findById({ _id: req.params.id }).exec();
+  marsupilami.friend = "";
+  marsupilami.save().then(marsupilami => {
+    res.json('Update complete');
+    })
+    .catch(err => {
+          res.status(400).send("unable to update the database");
+    });
+}
 // Defined delete | remove 
 marsupilamiRoutes.route('/delete/:id').get(function (req, res) {
-    Marsupilami.findByIdAndRemove({_id: req.params.id}, function(err, marsupilami){
+  
+    /*Marsupilami.findByIdAndUpdate({_id: req.params.id}, function(err, marsupilami){
         if(err) res.json(err);
         else res.json('Successfully removed');
-    });
+    });*/
+    getByIdAndChangeFreind(req,res)
 });
+ //inscription
+ marsupilamiRoutes.route('/register').post(function (req, res) {
+  let marsupilami = new Marsupilami(req.body);
+  marsupilami.save()
+    .then(marsupilami => {
+      res.json(marsupilami._id)
+     // res.status(200).json({'marsupilami': 'marsupilami in added successfully'});
+    })
+    .catch(err => {
+    res.status(400).send("unable to save to database");
+    });
+  
+});
+
+// login
+async function authenticateService({ username, password }) {
+  const marsupilami = await Marsupilami.findOne({ username });
+  console.log(marsupilami.username)
+  if (marsupilami && marsupilami.password == password ) { 
+      return {
+          ...marsupilami.toJSON(),
+         
+      };
+  }
+}
+
+marsupilamiRoutes.route('/login').post(function(req, res, next) {
+  authenticateService(req.body)
+      .then(marsupilami => marsupilami ? res.json(marsupilami) : res.status(400).json({ message: 'Username or password is incorrect' }))
+      .catch(err => next(err));
+})
 
 module.exports = marsupilamiRoutes;

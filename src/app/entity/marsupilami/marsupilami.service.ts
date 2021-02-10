@@ -12,8 +12,10 @@ export class MarsupilamiService {
   constructor(private http: HttpClient, private router: Router) { }
 
   
-  add( age, family, race,food,createdBy) {
+  add(username, password,age, family, race,food,createdBy) {
     const obj = {
+      username:username,
+      password:password,
       age: age,
       family: family,
       race: race,
@@ -31,15 +33,15 @@ export class MarsupilamiService {
     .get(`${this.uri}get/`+id);
   }
 
-  edit( id,age, family, race,food,createdBy) {
+  edit( id,age, family, race,food,friend) {
     const obj = {
       age: age,
       family: family,
       race: race,
       food: food,
-      createdBy: createdBy
+      friend: friend
     };
-    console.log(obj);
+    console.log(id);
     this.http.post(`${this.uri}edit/${id}`, obj)
         .subscribe(res => this.router.navigate(['marsupilami/list']));
   }
@@ -50,9 +52,55 @@ export class MarsupilamiService {
     .get(`${this.uri}/delete/${id}`);
   }
 
-  getAll(){
+  getAllMarsupilami(){
     return this
     .http
     .get(`${this.uri}list`);
+  }
+
+  getAllFriend(usernameMarsupilami){
+    return this
+    .http
+    .get(`${this.uri}list/${usernameMarsupilami}`);
+  }
+
+  regiter( username, password, confirmrPassword) {
+    const obj = {
+      username: username,
+      password: password,
+      confirmrPassword: confirmrPassword
+    };
+    console.log(obj);
+    this.http.post(`${this.uri}register`, obj)
+        .subscribe(res => {
+          localStorage.setItem("id", JSON.stringify(res)),
+          console.log(res),
+          this.router.navigate(['/marsupilami/list']),
+          localStorage.setItem("currentUser", JSON.stringify(username));
+        });
+  }
+
+  login(username, password) {
+    const obj = {
+      username: username,
+      password: password
+    };
+    console.log(obj);
+    this.http.post(`${this.uri}login`, obj)
+        .subscribe(
+          res => {
+            this.router.navigate(['/marsupilami/list'])
+            localStorage.setItem("currentUser", JSON.stringify(username));
+            localStorage.setItem("id", JSON.stringify(res["_id"])),
+            console.log("==> " + res["_id"] )
+           },
+          (err) =>{
+           const result =  window.confirm("Username or password is incorrect")
+           if(result ==  true){
+            let password_input = document.getElementById('password')as HTMLInputElement
+            password_input.value=""
+           }
+        }
+          );
   }
 }

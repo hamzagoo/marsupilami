@@ -4,10 +4,16 @@
     <img src="../../../../assets/marsupilami.jpg" style="border-radius: 37%;" width="10%">
     <ul class="navbar-nav"  *ngIf=true >
       <li class="nav-item">
+        <a style="cursor: pointer; color: white;" (click)="redirectToEdit()" class="nav-link" routerLinkActive="active">
+          Edit
+        </a>
+      </li>
+      <li class="nav-item">
         <a style="cursor: pointer; color: white;" (click)="redirectToLogin()" class="nav-link" routerLinkActive="active">
           log Out
         </a>
       </li>
+     
     </ul>
   </div>
 </nav>
@@ -17,7 +23,7 @@
         <img src="../../../../assets/m1.jpg" style="width: 20%;" alt="">
     </div>
     <div class="col-4">
-        <h1 class="art-shadow">List Of Marsupilami</h1>
+        <h1 class="art-shadow">List Of All friend</h1>
     </div>
     <div class="col-4">
         <img src="../../../../assets/m2.png" style="width: 31%;" alt="">
@@ -28,7 +34,7 @@
 <div class="container">
 <div class="card">
     <div class="col-12" style="text-align: right; padding: 10px;">
-        <button type="button" class="btn btn-primary"  (click)="redirectToAdd()" >Add Marsupilami</button>
+        <button type="button" class="btn btn-primary"  (click)="redirectToAdd()" >Add Friend</button>
     </div>
     <div style="padding: 20px;">
         <table class="table table-hover">
@@ -42,7 +48,7 @@
                 <span class="vertical-line"></span>
                 <td>Food</td>
                 <span class="vertical-line"></span>
-                <td>Created by</td>
+                <td>friend</td>
                 <span class="vertical-line"></span>
                 <td colspan="2" style="text-align: center;">Actions</td>
             </tr>
@@ -58,10 +64,9 @@
                     <span class="vertical-line"></span>
                     <td>{{ marsupilami.food }}</td>
                     <span class="vertical-line"></span>
-                    <td>{{ marsupilami.createdBy }}</td>
+                    <td>{{ marsupilami.friend }}</td>
                     <span class="vertical-line"></span>
-                    <td><button type="button" class="btn btn-primary"  (click)="redirectToEdit(marsupilami._id,marsupilami.createdBy)" >Update</button></td>
-                    <td><button type="button" class="btn btn-danger" (click)= "open(marsupilami._id,marsupilami.createdBy)">Delete</button></td>
+                    <td><button type="button" class="btn btn-danger" (click)= "open(marsupilami._id,marsupilami.friend)">Delete</button></td>
                 </tr>
             </tbody>
           </table>
