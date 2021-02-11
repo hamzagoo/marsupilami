@@ -1,0 +1,64 @@
+
+<nav class="navbar navbar-expand-sm bg-light" style="background-color: #45a1ff !important;">
+    <div class="container-fluid"> 
+     <a href="http://localhost:4200/marsupilami/list">
+      <img src="../../../../assets/marsupilami.jpg" style=" width: 25%; border-radius: 37%;" routerLinkActive="active">
+     </a>
+      <ul class="navbar-nav" *ngIf=false>
+      </ul>
+      <ul class="navbar-nav"  *ngIf=true >
+        <li class="nav-item">
+          <a style="cursor: pointer; color: white;"  (click)="redirectToLogin()" class="nav-link" routerLinkActive="active">
+            log Out
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br>
+  <div class="container">
+    <div class=row>
+      <div class="col-3">
+        <button type="button"style="    margin-bottom: 10px;" class="btn btn-primary"  (click)="redirectToList()" >Return</button>
+      </div>
+      <div class="col-9">
+        <h1 class="art-shadow">add new Marsupilami</h1>
+      </div>
+      <br>
+    </div>
+  <div class="card">
+      <div class="card-body" style="overflow: auto; height: 600px;">
+        <div class="form-group">
+          <label class="col-md-4">Username</label>
+          <input type="text" [(ngModel)]="marsupilami.username" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="col-md-4">password</label>
+            <input type="text" [(ngModel)]="marsupilami.password" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Age</label>
+            <input type="number" [(ngModel)]="marsupilami.age" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Family </label>
+            <input type="text" [(ngModel)]="marsupilami.family" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Race </label>
+            <input type="text" [(ngModel)]="marsupilami.race" class="form-control" />
+          </div>
+          <div class="form-group">
+              <label class="col-md-4">Food </label>
+              <input type="text"  [(ngModel)]="marsupilami.food" class="form-control" />
+            </div>
+          <div class="form-group"> 
+              <label class="col-md-4">Friend </label>
+              <input type="text" disabled [(ngModel)]="marsupilami.friend" class="form-control" />
+          </div>
+          <div class="form-group" style="text-align: center;">
+            <button style="width: 20%;" (click)="registre(marsupilami.username,marsupilami.password,marsupilami.age,marsupilami.family,marsupilami.race,marsupilami.food)"  class="btn btn-primary">Save</button>
+          </div>
+      </div>
+    </div>
+    </div>

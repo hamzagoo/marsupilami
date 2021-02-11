@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddNewMarsupilamiComponent } from './entity/marsupilami/add-new-marsupilami/add-new-marsupilami.component';
 import { AddMarsupilamiComponent } from './entity/marsupilami/add/add-marsupilami.component';
 import { EditMarsupilamiComponent } from './entity/marsupilami/edit/edit-marsupilami.component';
 import { ListMarsupilamiComponent } from './entity/marsupilami/list/list-marsupilami.component';
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'login/register',
     component: RegisterComponent
+  },
+  {
+    path: 'marsupilami/addNewMarsupilami',
+    component: AddNewMarsupilamiComponent
   },
   {
     path: 'marsupilami/add',

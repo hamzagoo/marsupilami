@@ -96,12 +96,19 @@ async function getByIdAndChangeFreind(req,res) {
 }
 // Defined delete | remove 
 marsupilamiRoutes.route('/delete/:id').get(function (req, res) {
-  
-    /*Marsupilami.findByIdAndUpdate({_id: req.params.id}, function(err, marsupilami){
-        if(err) res.json(err);
-        else res.json('Successfully removed');
-    });*/
     getByIdAndChangeFreind(req,res)
+});
+marsupilamiRoutes.route('/register/newMarsupilami').post(function (req, res) {
+  let marsupilami = new Marsupilami(req.body);
+  marsupilami.save()
+    .then(marsupilami => {
+      res.json(marsupilami._id)
+     // res.status(200).json({'marsupilami': 'marsupilami in added successfully'});
+    })
+    .catch(err => {
+    res.status(400).send("unable to save to database");
+    });
+  
 });
  //inscription
  marsupilamiRoutes.route('/register').post(function (req, res) {

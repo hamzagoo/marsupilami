@@ -27,7 +27,7 @@ export class AddMarsupilamiComponent implements OnInit {
     this.marsupilamiService.getAllMarsupilami().subscribe((res: Marsupilami[]) => {
       this.data = res; 
       this.data.forEach(element => {
-        if(element._id == this.id){
+        if(element._id == this.id || element.friend == this.currenMarsupilami){
           this.data.splice(count,1)
         }
         count++
@@ -36,10 +36,7 @@ export class AddMarsupilamiComponent implements OnInit {
       })
   }
   save(marsupilami){
-    console.log(marsupilami['age'])
-  
     marsupilami['friend'] = this.currenMarsupilami;
-   // console.log(this.marsupilami.age,this.marsupilami.family,this.marsupilami.race,this.marsupilami.food,this.marsupilami.createdBy);
     this.marsupilamiService.edit(marsupilami["_id"],marsupilami['age'],marsupilami['family'],marsupilami['race'],marsupilami['food'],marsupilami['friend']);
   }
 

@@ -40,12 +40,15 @@ export class ListMarsupilamiComponent implements OnInit {
     this.data = res;
     })
   }
+  creatNewMarsupilami(){
+    this.router.navigate(['marsupilami/addNewMarsupilami'])
+  }
 
   open(id,createdBy) {
     // recuperation de l'utilisateur courant dans localStorage
     const CurrentCreatedBy =  JSON.parse(localStorage.getItem("currentUser"));
     // test pour les droits d'accée 
-    if(createdBy == CurrentCreatedBy || CurrentCreatedBy =="Admin"){
+    if(createdBy == CurrentCreatedBy){
       const reponse = window.confirm("Confirm deletion !! "); 
       if(reponse == true){
         this.delete(id);

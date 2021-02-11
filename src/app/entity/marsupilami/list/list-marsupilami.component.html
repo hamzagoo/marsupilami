@@ -36,10 +36,15 @@
     <div class="col-12" style="text-align: right; padding: 10px;">
         <button type="button" class="btn btn-primary"  (click)="redirectToAdd()" >Add Friend</button>
     </div>
+    <div class="col-12" style="text-align: right; padding: 10px;">
+      <button type="button" class="btn btn-primary"  (click)="creatNewMarsupilami()" >Add</button>
+  </div>
     <div style="padding: 20px;">
         <table class="table table-hover">
             <thead>
             <tr style="background-color: #45a1ff; color: white;">
+                <td>Name</td>
+                <span class="vertical-line"></span>
                 <td>Age</td>
                 <span class="vertical-line"></span>
                 <td>Family</td>
@@ -56,6 +61,8 @@
           
             <tbody>
                 <tr *ngFor="let marsupilami of data">
+                    <td>{{ marsupilami.username }}</td>
+                    <span class="vertical-line"></span>
                     <td>{{ marsupilami.age }}</td>
                     <span class="vertical-line"></span>
                     <td>{{ marsupilami.family }}</td>

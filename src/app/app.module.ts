@@ -4,7 +4,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MarsupilamiModule } from './entity/marsupilami/marsupilami.module';
-import { UserModule } from './entity/user/user.module';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -35,13 +34,14 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    HttpClientModule ,
     MarsupilamiModule,
-    UserModule,
     BrowserModule,
     AppRoutingModule,
     SlimLoadingBarModule,

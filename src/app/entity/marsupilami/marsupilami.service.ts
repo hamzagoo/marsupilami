@@ -63,7 +63,26 @@ export class MarsupilamiService {
     .http
     .get(`${this.uri}list/${usernameMarsupilami}`);
   }
-
+  ajouteNewMarsupilami( username, password,age,family,race,food,friend) {
+    const obj = {
+      username: username,
+      password: password,
+      age:age,
+      family:family,
+      race:race,
+      food:food,
+      friend:friend
+    };
+    console.log(obj);
+    this.http.post(`${this.uri}register/newMarsupilami`, obj)
+        .subscribe(res => {
+          //localStorage.setItem("id", JSON.stringify(res)),
+          console.log(res),
+          this.router.navigate(['/marsupilami/list']),
+          console.log("bien enrigistrer")
+          //localStorage.setItem("currentUser", JSON.stringify(username));
+        });
+  }
   regiter( username, password, confirmrPassword) {
     const obj = {
       username: username,

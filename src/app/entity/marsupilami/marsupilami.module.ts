@@ -15,13 +15,15 @@ import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {MatSelectModule} from '@angular/material/select';
+import { AddNewMarsupilamiComponent } from './add-new-marsupilami/add-new-marsupilami.component';
 @NgModule({
   declarations: [
     AddMarsupilamiComponent,
     EditMarsupilamiComponent,
     ListMarsupilamiComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddNewMarsupilamiComponent
   ],
   imports: [
     CommonModule,
